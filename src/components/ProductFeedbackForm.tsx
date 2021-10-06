@@ -1,25 +1,47 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-function ProductFeedbackForm() {
+type CommentObject = {
+  id: number;
+  name: string;
+  email: string;
+  rating: number;
+  comment: string;
+};
+
+type Props = {
+  setComments: any;
+  commentArray: CommentObject[];
+};
+
+const ProductFeedbackForm: React.FC<Props> = ({
+  setComments,
+  commentArray,
+}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log('Form submitted');
-    console.log(event.target);
+
+    let newComment = {
+      id: commentArray.length + 1,
+      name: name,
+      email: email,
+      rating: rating,
+      comment: comment,
+    };
+
+    let newArray = [newComment, ...commentArray];
+
+    setComments(newArray);
   };
 
-  const handleNameInput = (event: any) => {
-    setName(event.target.value);
-  };
-
-  const handleEmailInput = (event: any) => {
-    setEmail(event.target.value);
-  };
-
+  const handleNameInput = (event: any) => setName(event.target.value);
+  const handleEmailInput = (event: any) => setEmail(event.target.value);
+  const handleCommentInput = (event: any) => setComment(event.target.value);
   const handleOnClick = (event: any) => setRating(event.target.value);
 
   const ratingBuilder = () => {
@@ -63,10 +85,21 @@ function ProductFeedbackForm() {
         Rating: {rating}
         {ratingBuilder()}
       </label>
+      <br />
+      <label>
+        Comment:{' '}
+        <input
+          type='textarea'
+          name='comment'
+          onChange={handleCommentInput}
+          value={comment}
+        />
+      </label>
+      <br />
       <button>Submit Review</button>
     </Form>
   );
-}
+};
 
 const Form = styled.form`
   background-color: rgb(220, 216, 208);
