@@ -1,55 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { CommentObject } from '../types';
 
-type CommentObject = {
-  id: number;
-  name: string;
-  email: string;
-  rating: number;
-  comment: string;
+type Props = {
+  commentArray: CommentObject[];
 };
 
-function ProductComments() {
-  let [commentArray, setComments] = useState<CommentObject[]>([]);
+const commentBuilder = (commentArray: CommentObject[]) => {
+  return commentArray.map((comment) => {
+    return (
+      <Comment key={comment.id}>
+        <p>
+          {comment.name} -{' '}
+          <span style={{ color: 'green' }}>
+            <i>{comment.email}</i>
+          </span>
+        </p>
+        <p>
+          {comment.rating} - {comment.comment}
+        </p>
+      </Comment>
+    );
+  });
+};
 
-  commentArray = [
-    {
-      id: 0,
-      name: 'Bob',
-      email: 'Bob@gmail.com',
-      rating: 1,
-      comment: 'Not a fan. Where are the headphones?',
-    },
-    {
-      id: 1,
-      name: 'Jasmine',
-      email: 'Jazzy@gmail.com',
-      rating: 4,
-      comment:
-        'Adore the concept of not having headphones when I pay for headphones!',
-    },
-  ];
-
-  const commentBuilder = () => {
-    return commentArray.map((comment) => {
-      return (
-        <Comment key={comment.id}>
-          <p>
-            {comment.name} -{' '}
-            <span style={{ color: 'green' }}>
-              <i>{comment.email}</i>
-            </span>
-          </p>
-          <p>
-            {comment.rating} - {comment.comment}
-          </p>
-        </Comment>
-      );
-    });
-  };
-
-  return <Comments>{commentBuilder()}</Comments>;
-}
+const ProductComments: React.FC<Props> = ({ commentArray }) => (
+  <Comments>{commentBuilder(commentArray)}</Comments>
+);
 
 export default ProductComments;
 
