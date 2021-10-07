@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-type CommentObject = {
-  id: number;
-  name: string;
-  email: string;
-  rating: number;
-  comment: string;
-};
+import { buildDate } from '../utils';
+import { CommentObject } from '../types';
 
 type Props = {
   setComments: any;
@@ -32,8 +26,10 @@ const ProductFeedbackForm: React.FC<Props> = ({
       email: email,
       rating: rating,
       comment: comment,
+      date: buildDate(),
     };
 
+    console.log(newComment.date)
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);
@@ -103,7 +99,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
 
 const Form = styled.form`
   background-color: rgb(220, 216, 208);
-  min-width: 500px;
+  min-width: 49%;
   padding: 16px;
 `;
 

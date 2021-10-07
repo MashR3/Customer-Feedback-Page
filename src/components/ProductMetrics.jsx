@@ -66,6 +66,6 @@ export default ProductMetrics;
 
 const GraphContainer = styled.div`
   height: 300px;
-  min-width: 500px;
+  min-width: 49%;
   border: solid green 2px;
 `;

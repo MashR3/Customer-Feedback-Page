@@ -19,6 +19,7 @@ const commentBuilder = (commentArray: CommentObject[]) => {
         <p>
           {comment.rating} - {comment.comment}
         </p>
+        <span>{comment.date}</span>
       </Comment>
     );
   });
