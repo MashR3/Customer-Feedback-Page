@@ -18,7 +18,7 @@ function App() {
   }, [commentArray]);
 
   return (
-    <div className='App' style={{ margin: 24 }}>
+    <div className='App' style={{ margin: 32 }}>
       <header className='App-header'>
         <h1>Customer Feedback: {itemName}</h1>
         <p>{itemDescription}</p>
@@ -40,5 +40,5 @@ export default App;
 
 const MainContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: centre;
 `;

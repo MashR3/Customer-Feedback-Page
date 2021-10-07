@@ -31,8 +31,7 @@ const ProductComments: React.FC<Props> = ({ commentArray }) => (
 export default ProductComments;
 
 const Comments = styled.div`
-  margin: 8px auto;
-  width: 90%;
+  // width: 90%;
   border-radius: 10px;
 `;
 
