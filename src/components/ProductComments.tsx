@@ -1,43 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CommentObject } from '../types';
+import Comment from './Comment';
 
 type Props = {
   commentArray: CommentObject[];
 };
 
-const commentBuilder = (commentArray: CommentObject[]) => {
-  return commentArray.map((comment) => {
-    return (
-      <Comment key={comment.id}>
-        <p>
-          {comment.name} -{' '}
-          <span style={{ color: 'green' }}>
-            <i>{comment.email}</i>
-          </span>
-        </p>
-        <p>
-          {comment.rating} - {comment.comment}
-        </p>
-        <span>{comment.date}</span>
-      </Comment>
-    );
-  });
-};
-
 const ProductComments: React.FC<Props> = ({ commentArray }) => (
-  <Comments>{commentBuilder(commentArray)}</Comments>
+  <Comments>
+    <h3>Read what others say</h3>
+    {commentArray.map((comment) => (
+      <Comment comment={comment} key={comment.id} />
+    ))}
+  </Comments>
 );
 
 export default ProductComments;
 
-const Comments = styled.div`
-  // width: 90%;
+const Comments = styled.section`
   border-radius: 10px;
-`;
-
-const Comment = styled.div`
-  padding: 8px;
-  background: rgb(232, 97, 87);
-  border: solid 2px black;
+  margin-top: 16px;
+  padding: 24px;
+  background: #1c76d770;
+  h3 {
+    text-align: left;
+    letter-spacing: 2px;
+    margin-top: 0px;
+  }
 `;

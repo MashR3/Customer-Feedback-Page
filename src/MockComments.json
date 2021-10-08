@@ -5,7 +5,7 @@
     "email": "Bob@gmail.com",
     "rating": 1,
     "comment": "Not a fan. Where are the headphones?",
-    "date": "01/01/2000 - 10:01:11"
+    "date": "01/01/2000"
   },
   {
     "id": 1,
@@ -13,6 +13,6 @@
     "email": "Jazzy@gmail.com",
     "rating": 4,
     "comment": "Adore the concept of not having headphones when I pay for headphones!",
-    "date": "15/12/2002 - 16:22:41"
+    "date": "15/12/2002"
   }
 ]
