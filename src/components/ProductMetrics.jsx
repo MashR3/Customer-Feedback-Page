@@ -11,18 +11,18 @@ import {
 } from 'recharts';
 
 const data = [
-  { rating: 5, total: 11 },
-  { rating: 4, total: 14 },
-  { rating: 3, total: 21 },
-  { rating: 2, total: 55 },
-  { rating: 1, total: 87 },
+  { rating: '5 Star', total: 11 },
+  { rating: '4 Star', total: 14 },
+  { rating: '3 Star', total: 21 },
+  { rating: '2 Star', total: 55 },
+  { rating: '1 Star', total: 87 },
 ];
 
 const barBuilder = (data) => {
   return (
     <Bar dataKey={'total'}>
       {data.map((rateValue) => (
-        <Cell key={rateValue['rating']} fill='blue' />
+        <Cell key={rateValue['rating']} fill='#fc5185' />
       ))}
     </Bar>
   );
@@ -37,7 +37,7 @@ function ProductMetrics() {
           barCategoryGap='15%'
           barSize='20'
           layout='vertical'
-          margin={{ left: -15, right: 20, bottom: 20, top: 10 }}
+          margin={{ left: 10, right: 30, bottom: 0, top: 20 }}
         >
           <YAxis
             type='category'
@@ -48,24 +48,27 @@ function ProductMetrics() {
           />
           <XAxis
             type='number'
-            label={{
-              value: 'Total Ratings',
-              position: 'insideBottomRight',
-              offset: -10,
-            }}
+            // label={{
+            //   value: 'Total Ratings',
+            //   position: 'insideBottomRight',
+            //   offset: -10,
+            // }}
           />
           <Tooltip />
           {barBuilder(data)}
         </BarChart>
       </ResponsiveContainer>
+      <figcaption>x-number total ratings</figcaption>
     </GraphContainer>
   );
 }
 
 export default ProductMetrics;
 
-const GraphContainer = styled.div`
+const GraphContainer = styled.figure`
   height: 300px;
-  min-width: 49%;
-  border: solid green 2px;
+  // min-width: 49%;
+  background: #e7c8b8;
+  padding: 24px;
+  border-radius: 10px;
 `;

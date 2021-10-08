@@ -19,28 +19,51 @@ function App() {
   }, [commentArray]);
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1>Customer Feedback: {itemName}</h1>
+    <div>
+      <Header>
+        <h1>Product Review</h1>
+        <hr />
+        <h2>You are reviewing {itemName}</h2>
         <p>{itemDescription}</p>
-      </header>
-      <MainContainer>
+      </Header>
+      <MainContainer className='App'>
         <ProductFeedbackForm
           setComments={setComments}
           commentArray={commentArray}
         />
         <ProductMetrics />
+        <ProductComments commentArray={commentArray} />
       </MainContainer>
-
-      <ProductComments commentArray={commentArray} />
     </div>
   );
 }
 
 export default App;
 
+const Header = styled.header`
+  h1 {
+    font-size: 48px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 10px;
+    word-spacing: 4px;
+    color: #123C69;
+    text-transform: uppercase;
+  }
+  p {
+    text-align: center;
+  }
+  h2 {
+    letter-spacing: 2px;
+    // margin-left: 8px;
+    text-align: center;
+    text-transform: capitalise;
+
+  }
+`;
+
 const MainContainer = styled.div`
-  padding: 12px;
+  // padding: 12px;
   // display: flex;
   // justify-content: space-between;
 `;

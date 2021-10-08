@@ -29,7 +29,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
       date: buildDate(),
     };
 
-    console.log(newComment.date)
+    console.log(newComment.date);
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);
@@ -49,6 +49,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
       <input
         type='radio'
         id={rating.toString()}
+        aria-label={`${rating}-stars`}
         key={rating}
         name='form-rating'
         value={rating}
@@ -60,7 +61,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h3>Let us know what you think!</h3>
+      <h3>Share your thoughts</h3>
       <Label htmlFor='form-username'>Name</Label>
       <Input
         id='form-username'
@@ -91,7 +92,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
       <Label htmlFor='form-comment'>Comment</Label>
       <CommentArea
         id='form-comment'
-        rows={10}
+        rows={8}
         maxLength={500}
         name='form-comment'
         onChange={handleCommentInput}
@@ -106,6 +107,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
 };
 
 const CommentArea = styled.textarea`
+  resize: none;
   max-width: 100%;
   width: 100%;
   color: #60656f;
@@ -113,12 +115,12 @@ const CommentArea = styled.textarea`
   font-weight: 400;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #ffffff;
-  border: solid 1px #cccccc;
   border-radius: 4px;
   display: block;
   margin-bottom: 4px;
   padding: 12px;
-  border-width: 1px;
+  outline: none;
+  border: 1px solid #ac3b61;
 `;
 const Button = styled.button`
   color: #ffffff;
@@ -132,7 +134,7 @@ const Button = styled.button`
   margin: auto;
   padding: 12px;
   max-width: 100%;
-  width: 60%;
+  width: 50%;
   :hover {
     background-color: #b0385d; /* Darker pink */
     color: white;
@@ -144,18 +146,25 @@ const Button = styled.button`
     box-shadow: 0 5px #666;
     transform: translateY(2px);
   }
+  cursor: pointer;
 `;
 
 const Form = styled.form`
   background-color: #bab2b5;
   padding: 24px;
-  border-radius: 4px;
+  border-radius: 10px;
+  h3 {
+    text-align: left;
+    letter-spacing: 2px;
+    margin-top: 0px;
+  }
 `;
 
 const Label = styled.label`
   display: flex;
   padding-bottom: 4px;
   font-weight: inherit;
+  border-radius: 4px 0px 0px 4px;
 `;
 
 const Input = styled.input`
@@ -164,14 +173,14 @@ const Input = styled.input`
   font-weight: 400;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #ffffff;
-  border: solid 1px #cccccc;
+  border: 1px solid #ac3b61;
   border-radius: 4px;
   display: block;
   margin-bottom: 4px;
   padding: 12px;
   max-width: 80%;
-  border-width: 1px;
   width: 100%;
+  outline: none;
 `;
 
 export default ProductFeedbackForm;
