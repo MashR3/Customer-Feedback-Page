@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { buildDate } from '../utils';
 import { CommentObject } from '../types';
 
 type Props = {
@@ -25,8 +26,10 @@ const ProductFeedbackForm: React.FC<Props> = ({
       email: email,
       rating: rating,
       comment: comment,
+      date: buildDate(),
     };
 
+    console.log(newComment.date)
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);

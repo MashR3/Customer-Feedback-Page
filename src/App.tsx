@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import ProductFeedbackForm from './components/ProductFeedbackForm';
 import ProductMetrics from './components/ProductMetrics';
 import ProductComments from './components/ProductComments';
-import initialComments from './MockComments.json';
 import { CommentObject } from './types';
+import initialComments from './MockComments.json';
 import './styles.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   let [commentArray, setComments] = useState<CommentObject[]>(initialComments);
 
   useEffect(() => {
-    console.log('array changed');
+    console.log('useEffect Comment section');
   }, [commentArray]);
 
   return (
