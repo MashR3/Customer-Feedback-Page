@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-type CommentObject = {
-  id: number;
-  name: string;
-  email: string;
-  rating: number;
-  comment: string;
-};
+import { CommentObject } from '../types';
 
 type Props = {
   setComments: any;
@@ -37,6 +30,9 @@ const ProductFeedbackForm: React.FC<Props> = ({
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);
+
+    //if successful, clear form!!
+    //if not, validation and catch and log!
   };
 
   const handleNameInput = (event: any) => setName(event.target.value);
@@ -51,60 +47,128 @@ const ProductFeedbackForm: React.FC<Props> = ({
         type='radio'
         id={rating.toString()}
         key={rating}
-        name='rating'
+        name='form-rating'
         value={rating}
         onClick={handleOnClick}
+        required
       />
     ));
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h3>Let us know what you think:</h3>
-      <label>
-        Name:{' '}
-        <input
-          type='text'
-          name='name'
-          onChange={handleNameInput}
-          value={name}
-        />
-      </label>
+      <h3>Let us know what you think!</h3>
+      <Label htmlFor='form-username'>Name</Label>
+      <Input
+        id='form-username'
+        placeholder='Enter your name here'
+        type='text'
+        name='form-username'
+        onChange={handleNameInput}
+        value={name}
+        required
+      />
       <br />
-      <label>
-        Email:{' '}
-        <input
-          type='text'
-          name='email'
-          onChange={handleEmailInput}
-          value={email}
-        />
-      </label>
+      <Label htmlFor='form-email'>Email</Label>
+      <Input
+        id='form-email'
+        placeholder='Enter your email address here'
+        type='email'
+        name='form-email'
+        onChange={handleEmailInput}
+        value={email}
+        required
+      />
       <br />
-      <label>
+      <Label htmlFor='form-rating'>
         Rating: {rating}
         {ratingBuilder()}
-      </label>
+      </Label>
       <br />
-      <label>
-        Comment:{' '}
-        <input
-          type='textarea'
-          name='comment'
-          onChange={handleCommentInput}
-          value={comment}
-        />
-      </label>
+      <Label htmlFor='form-comment'>Comment</Label>
+      <CommentArea
+        id='form-comment'
+        rows={10}
+        maxLength={500}
+        name='form-comment'
+        onChange={handleCommentInput}
+        value={comment}
+      />
       <br />
-      <button>Submit Review</button>
+      <Button id='form-button-submit' type='submit'>
+        Submit Review
+      </Button>
     </Form>
   );
 };
 
+const CommentArea = styled.textarea`
+  max-width: 100%;
+  width: 100%;
+  color: #60656f;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  border: solid 1px #cccccc;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 4px;
+  padding: 12px;
+  border-width: 1px;
+`;
+const Button = styled.button`
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fc5185;
+  border-radius: 4px;
+  border: none;
+  display: block;
+  margin: auto;
+  padding: 12px;
+  max-width: 100%;
+  width: 60%;
+  :hover {
+    background-color: #b0385d; /* Darker pink */
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+  :active {
+    background-color: #b0385d;
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
+  }
+`;
+
 const Form = styled.form`
-  background-color: rgb(220, 216, 208);
-  min-width: 45%;
-  padding: 16px;
+  background-color: #bab2b5;
+  padding: 24px;
+  border-radius: 4px;
+`;
+
+const Label = styled.label`
+  display: flex;
+  padding-bottom: 4px;
+  font-weight: inherit;
+`;
+
+const Input = styled.input`
+  color: #60656f;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  border: solid 1px #cccccc;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 4px;
+  padding: 12px;
+  max-width: 80%;
+  border-width: 1px;
+  width: 100%;
 `;
 
 export default ProductFeedbackForm;
