@@ -5,6 +5,7 @@ import ProductMetrics from './components/ProductMetrics';
 import ProductComments from './components/ProductComments';
 import { CommentObject } from './types';
 import initialComments from './MockComments.json';
+import './styles.css';
 
 function App() {
   const [itemName, setItemName] = useState('Headphoneless Headphones');
@@ -18,7 +19,7 @@ function App() {
   }, [commentArray]);
 
   return (
-    <div className='App' style={{ margin: 32 }}>
+    <div className='App'>
       <header className='App-header'>
         <h1>Customer Feedback: {itemName}</h1>
         <p>{itemDescription}</p>
@@ -39,6 +40,7 @@ function App() {
 export default App;
 
 const MainContainer = styled.div`
-  display: flex;
-  justify-content: centre;
+  padding: 12px;
+  // display: flex;
+  // justify-content: space-between;
 `;
