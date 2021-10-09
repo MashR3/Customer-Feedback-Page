@@ -8,7 +8,7 @@
 }
 
 body {
-  background: linear-gradient(to top, #AC3B61, #EDC7B7 50%, #fff 80%, #db997a 75%);
+  background: linear-gradient(to top, #AC3B61, #EDC7B7 50%, #fff 80%, #db997a 75px);
 }
 
 .App {

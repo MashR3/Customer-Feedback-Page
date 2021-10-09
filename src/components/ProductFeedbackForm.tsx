@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import styled from 'styled-components';
 import { buildDate } from '../utils';
 import { CommentObject } from '../types';
@@ -17,31 +17,27 @@ const ProductFeedbackForm: React.FC<Props> = ({
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
 
     let newComment = {
       id: commentArray.length + 1,
       name: name,
       email: email,
-      rating: rating,
+      rating: +rating,
       comment: comment,
       date: buildDate(),
     };
 
-    console.log(newComment.date);
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);
-
-    //if successful, clear form!!
-    //if not, validation and catch and log!
   };
 
-  const handleNameInput = (event: any) => setName(event.target.value);
-  const handleEmailInput = (event: any) => setEmail(event.target.value);
-  const handleCommentInput = (event: any) => setComment(event.target.value);
-  const handleOnClick = (event: any) => setRating(event.target.value);
+  const handleNameInput = (e: React.FormEvent<HTMLInputElement>): void => setName(e.currentTarget.value);
+  const handleEmailInput = (e: React.FormEvent<HTMLInputElement>): void => setEmail(e.currentTarget.value);
+  const handleCommentInput = (e: React.FormEvent<HTMLTextAreaElement>): void => setComment(e.currentTarget.value);
+  const handleOnClick = (e: React.FormEvent<HTMLInputElement>): void => setRating(+e.currentTarget.value);
 
   const ratingBuilder = () => {
     let rangeArray = [1, 2, 3, 4, 5];

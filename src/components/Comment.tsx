@@ -1,10 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CommentObject } from '../types';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaStar } from 'react-icons/fa';
 
 type Props = {
   comment: CommentObject;
+};
+
+const starBuilder = (comment: CommentObject) => {
+  let i = 0;
+  let arr = [];
+  while (i < comment.rating) {
+    arr.push(
+      <FaStar
+        className='staricon'
+        title='staricon'
+        key={`${comment.id}-${i}`}
+      />
+    );
+    i++;
+  }
+  return arr;
 };
 
 const Comment: React.FC<Props> = ({ comment }) => (
@@ -13,10 +29,10 @@ const Comment: React.FC<Props> = ({ comment }) => (
       <FaUserCircle className='usericon' title='usericon' />
       {comment.name}
     </p>
-    <span>
+    <span>{starBuilder(comment)}</span>
+    <span className='time-container'>
       Reviewed on <time>{comment.date}</time>
     </span>
-    <div>{comment.rating}</div>
     {comment.comment && (
       <>
         <Separator />
@@ -48,7 +64,7 @@ const CommentComponent = styled.div`
   p {
     margin: 4px;
   }
-  span {
+  .time-container {
     margin: 4px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -63,10 +79,15 @@ const CommentComponent = styled.div`
     color: #123c69;
     font-weight: 600;
     display: block;
+    float: left;
   }
   .usericon {
+    color: black;
     vertical-align: top;
     margin-right: 8px;
-    color: black;
+  }
+  .staricon {
+    color: #23466f;
+    margin: 5px 0px 2px 4px;
   }
 `;

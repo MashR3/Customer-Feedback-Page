@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { buildChartData, totalRatings} from '../utils';
+import { buildChartData } from '../utils';
 import {
   ResponsiveContainer,
   BarChart,
@@ -16,23 +16,25 @@ type Props = {
   commentArray: CommentObject[];
 };
 
-const data = buildChartData();
+const barBuilder = (commentArray: CommentObject[]) => {
+  console.log(commentArray)
 
-const barBuilder = () => {
+  console.log('Code run')
   return (
     <Bar dataKey={'total'}>
-      {data.map((rateValue: any) => (
+      {(buildChartData(commentArray)).map((rateValue: any) => (
         <Cell key={rateValue['rating']} fill='#fc5185' />
       ))}
     </Bar>
   );
 };
 
+
 const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
     <GraphContainer>
       <ResponsiveContainer width='100%' height='100%'>
         <BarChart
-          data={data}
+          data={buildChartData(commentArray)}
           barCategoryGap='15%'
           barSize='20'
           layout='vertical'
@@ -46,10 +48,10 @@ const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
           />
           <XAxis type='number' minTickGap={1} allowDecimals={false} />
           <Tooltip />
-          {barBuilder()}
+          {barBuilder(commentArray)}
         </BarChart>
       </ResponsiveContainer>
-      <figcaption>{totalRatings} total ratings</figcaption>
+      <figcaption>{commentArray.length} total ratings</figcaption>
     </GraphContainer>
   );
 

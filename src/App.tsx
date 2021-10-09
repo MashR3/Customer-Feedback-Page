@@ -9,9 +9,8 @@ import initialComments from './MockComments.json';
 import './styles.css';
 
 function App() {
-  const [initialData, setInitialData] = useState(initialComments);
 
-  let [commentArray, setComments] = useState<CommentObject[]>(initialData);
+  let [commentArray, setComments] = useState<CommentObject[]>(initialComments);
 
   // useEffect(() => {
   //   console.log('useEffect Comment section');
