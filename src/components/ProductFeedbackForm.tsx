@@ -67,6 +67,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
         id='form-username'
         placeholder='Enter your name here'
         type='text'
+        pattern="[A-Za-z]"
         name='form-username'
         onChange={handleNameInput}
         value={name}
@@ -80,6 +81,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
         type='email'
         name='form-email'
         onChange={handleEmailInput}
+        pattern="[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]"
         value={email}
         required
       />
