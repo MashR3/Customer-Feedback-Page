@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function Header() {
-  const [itemName, setItemName] = useState('Headphoneless Headphones');
-  const [itemDescription, setDescription] = useState(
-    "Welcome to the revolutionary concept of paying for an item and not receiving it! You (won't) hear the difference with these!"
+  const [itemName] = useState('Headphoneless Headphones');
+  const [itemDescription] = useState(
+    "Welcome to the revolutionary concept of paying for an item that doesn't work! You (won't) hear the difference with these!"
   );
 
   return (
@@ -26,7 +26,6 @@ const StyledHeader = styled.header`
     word-spacing: 4px;
     color: #123c69;
     text-transform: uppercase;
-    font-family: 'Graphik LCG Web', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -54,5 +53,8 @@ const StyledHeader = styled.header`
     margin-top: 80px;
     text-align: left;
     text-transform: capitalise;
+    @media only screen and (max-width: 760px) {
+      font-size: 30px;
+    }
   }
 `;

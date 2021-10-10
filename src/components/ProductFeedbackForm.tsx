@@ -18,9 +18,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const changeRating = (newRating: number) => {
-    setRating(newRating);
-  };
+  const changeRating = (newRating: number) => setRating(newRating);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -37,16 +35,11 @@ const ProductFeedbackForm: React.FC<Props> = ({
     let newArray = [newComment, ...commentArray];
 
     setComments(newArray);
+    setName('');
+    setEmail('');
+    setRating(0);
+    setComment('');
   };
-
-  const handleNameInput = (e: React.FormEvent<HTMLInputElement>): void =>
-    setName(e.currentTarget.value);
-  const handleEmailInput = (e: React.FormEvent<HTMLInputElement>): void =>
-    setEmail(e.currentTarget.value);
-  const handleCommentInput = (e: React.FormEvent<HTMLTextAreaElement>): void =>
-    setComment(e.currentTarget.value);
-  const handleOnClick = (e: React.FormEvent<HTMLInputElement>): void =>
-    setRating(+e.currentTarget.value);
 
   // For accessibility and screen readers
   const ratingBuilder = (num: number) => {
@@ -60,7 +53,9 @@ const ProductFeedbackForm: React.FC<Props> = ({
         key={rating}
         name='form-rating'
         value={rating}
-        onClick={handleOnClick}
+        onClick={(e: React.FormEvent<HTMLInputElement>): void =>
+          setRating(+e.currentTarget.value)
+        }
         onChange={() => changeRating(rating)}
         className='hidden-rating'
         required
@@ -78,7 +73,9 @@ const ProductFeedbackForm: React.FC<Props> = ({
         type='text'
         // pattern='[A-Za-z]'
         name='form-username'
-        onChange={handleNameInput}
+        onChange={(e: React.FormEvent<HTMLInputElement>): void =>
+          setName(e.currentTarget.value)
+        }
         value={name}
         required
       />
@@ -89,7 +86,9 @@ const ProductFeedbackForm: React.FC<Props> = ({
         placeholder='Enter your email address here'
         type='email'
         name='form-email'
-        onChange={handleEmailInput}
+        onChange={(e: React.FormEvent<HTMLInputElement>): void =>
+          setEmail(e.currentTarget.value)
+        }
         // pattern='[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]'
         value={email}
         required
@@ -100,14 +99,14 @@ const ProductFeedbackForm: React.FC<Props> = ({
         {ratingBuilder(rating)}
       </Label>
       <StarRatings
-          starDimension='32px'
-          starEmptyColor='#ffffff'
-          starHoverColor='gold'
-          rating={rating}
-          starRatedColor='#fd3d77'
-          changeRating={changeRating}
-          numberOfStars={5}
-        />
+        starDimension='32px'
+        starEmptyColor='#ffffff'
+        starHoverColor='gold'
+        rating={rating}
+        starRatedColor='#fd3d77'
+        changeRating={changeRating}
+        numberOfStars={5}
+      />
       <br />
       <Label htmlFor='form-comment'>Comment</Label>
       <CommentArea
@@ -115,7 +114,9 @@ const ProductFeedbackForm: React.FC<Props> = ({
         rows={8}
         maxLength={500}
         name='form-comment'
-        onChange={handleCommentInput}
+        onChange={(e: React.FormEvent<HTMLTextAreaElement>): void =>
+          setComment(e.currentTarget.value)
+        }
         value={comment}
       />
       <br />
@@ -125,6 +126,39 @@ const ProductFeedbackForm: React.FC<Props> = ({
     </Form>
   );
 };
+
+const Form = styled.form`
+  background-color: #69d1d7;
+  padding: 24px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  margin-right: 4px;
+  margin-left: 4px;
+  h3 {
+    text-align: left;
+    letter-spacing: 2px;
+    margin-top: 0px;
+  }
+  .hidden-rating {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+  }
+  .star-ratings {
+    display: flex !important;
+    margin-top: 12px !important;
+    @media only screen and (max-width: 760px) {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+  }
+`;
 
 const CommentArea = styled.textarea`
   resize: none;
@@ -167,31 +201,8 @@ const Button = styled.button`
     transform: translateY(2px);
   }
   cursor: pointer;
-`;
-
-const Form = styled.form`
-  background-color: #bab2b5;
-  padding: 24px;
-  border-radius: 10px;
-  h3 {
-    text-align: left;
-    letter-spacing: 2px;
-    margin-top: 0px;
-  }
-  .hidden-rating {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap; /* added line */
-    border: 0;
-  }
-  .star-ratings {
-    display: flex !important;
-    margin-top: 12px !important;
+  @media only screen and (max-width: 760px) {
+    width: 100%;
   }
 `;
 
@@ -200,6 +211,7 @@ const Label = styled.label`
   padding-bottom: 4px;
   font-weight: 400;
   border-radius: 4px 0px 0px 4px;
+  color: #0e1545;
 `;
 
 const Input = styled.input`
@@ -213,9 +225,11 @@ const Input = styled.input`
   display: block;
   margin-bottom: 4px;
   padding: 12px;
-  max-width: 80%;
-  width: 100%;
+  width: 80%;
   outline: none;
+  @media only screen and (max-width: 760px) {
+    width: 100%;
+  }
 `;
 
 export default ProductFeedbackForm;

@@ -11,22 +11,22 @@ import './styles.css';
 function App() {
   let [commentArray, setComments] = useState<CommentObject[]>(initialComments);
 
-  // useEffect(() => {
-  //   console.log('useEffect Comment section');
-  // }, [commentArray]);
-
   return (
-    <div>
+    <>
       <Header />
       <MainContainer>
-        <ProductFeedbackForm
-          setComments={setComments}
-          commentArray={commentArray}
-        />
-        <ProductMetrics commentArray={commentArray} />
+        <FloatDiv>
+          <ProductFeedbackForm
+            setComments={setComments}
+            commentArray={commentArray}
+          />
+        </FloatDiv>
+        <FloatDiv>
+          <ProductMetrics commentArray={commentArray} />
+        </FloatDiv>
         <ProductComments commentArray={commentArray} />
       </MainContainer>
-    </div>
+    </>
   );
 }
 
@@ -36,10 +36,18 @@ const MainContainer = styled.div`
   display: flex-start;
   flex-direction: column;
   justify-content: flex-start;
-  width: 80%;
+  width: 90%;
   min-height: 600px;
   background: #ffffff;
   text-align: center;
   margin: 64px auto;
   padding: 32px;
+`;
+
+const FloatDiv = styled.div`
+  width: 50%;
+  float: left;
+  @media only screen and (max-width: 760px) {
+    width: 100%;
+  }
 `;

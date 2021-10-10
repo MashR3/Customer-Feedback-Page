@@ -18,10 +18,13 @@ const ProductComments: React.FC<Props> = ({ commentArray }) => (
 
 export default ProductComments;
 
-const Comments = styled.section`
+const Comments = styled.div`
+  clear: both;
   border-radius: 10px;
   margin-top: 16px;
   padding: 24px;
+  margin-right: 4px;
+  margin-left: 4px;
   background: #fd3d7782;
   h3 {
     text-align: left;
