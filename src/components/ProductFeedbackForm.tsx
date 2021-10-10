@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { buildDate } from '../utils';
 import { CommentObject } from '../types';
+import StarRatings from 'react-star-ratings';
 
 type Props = {
   setComments: any;
@@ -16,6 +17,10 @@ const ProductFeedbackForm: React.FC<Props> = ({
   const [email, setEmail] = useState('');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+
+  const changeRating = (newRating: number) => {
+    setRating(newRating);
+  };
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -43,10 +48,12 @@ const ProductFeedbackForm: React.FC<Props> = ({
   const handleOnClick = (e: React.FormEvent<HTMLInputElement>): void =>
     setRating(+e.currentTarget.value);
 
-  const ratingBuilder = () => {
+  // For accessibility and screen readers
+  const ratingBuilder = (num: number) => {
     let rangeArray = [1, 2, 3, 4, 5];
     return rangeArray.map((rating) => (
       <input
+        checked={num === rating}
         type='radio'
         id={rating.toString()}
         aria-label={`${rating}-stars`}
@@ -54,6 +61,8 @@ const ProductFeedbackForm: React.FC<Props> = ({
         name='form-rating'
         value={rating}
         onClick={handleOnClick}
+        onChange={() => changeRating(rating)}
+        className='hidden-rating'
         required
       />
     ));
@@ -67,7 +76,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
         id='form-username'
         placeholder='Enter your name here'
         type='text'
-        pattern="[A-Za-z]"
+        // pattern='[A-Za-z]'
         name='form-username'
         onChange={handleNameInput}
         value={name}
@@ -81,15 +90,24 @@ const ProductFeedbackForm: React.FC<Props> = ({
         type='email'
         name='form-email'
         onChange={handleEmailInput}
-        pattern="[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]"
+        // pattern='[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]'
         value={email}
         required
       />
       <br />
       <Label htmlFor='form-rating'>
-        Rating: {rating}
-        {ratingBuilder()}
+        Rating: {rating} stars
+        {ratingBuilder(rating)}
       </Label>
+      <StarRatings
+          starDimension='32px'
+          starEmptyColor='#ffffff'
+          starHoverColor='gold'
+          rating={rating}
+          starRatedColor='#fd3d77'
+          changeRating={changeRating}
+          numberOfStars={5}
+        />
       <br />
       <Label htmlFor='form-comment'>Comment</Label>
       <CommentArea
@@ -159,6 +177,21 @@ const Form = styled.form`
     text-align: left;
     letter-spacing: 2px;
     margin-top: 0px;
+  }
+  .hidden-rating {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+  }
+  .star-ratings {
+    display: flex !important;
+    margin-top: 12px !important;
   }
 `;
 
