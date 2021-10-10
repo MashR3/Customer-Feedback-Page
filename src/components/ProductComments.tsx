@@ -22,7 +22,7 @@ const Comments = styled.section`
   border-radius: 10px;
   margin-top: 16px;
   padding: 24px;
-  background: #1c76d770;
+  background: #fd3d7782;
   h3 {
     text-align: left;
     letter-spacing: 2px;

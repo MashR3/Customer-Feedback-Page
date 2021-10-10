@@ -23,7 +23,7 @@ const barBuilder = (commentArray: CommentObject[]) => {
   return (
     <Bar dataKey={'total'}>
       {(buildChartData(commentArray)).map((rateValue: any) => (
-        <Cell key={rateValue['rating']} fill='#fc5185' />
+        <Cell key={rateValue['rating']} fill='#fd3d77' />
       ))}
     </Bar>
   );

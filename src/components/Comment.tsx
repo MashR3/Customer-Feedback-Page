@@ -51,16 +51,18 @@ const Separator = styled.hr`
 `;
 
 const CommentComponent = styled.div`
+  color: #0e1545;
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: flex-start;
   padding: 8px;
-  background: #edc7b7;
+  background: #ffffff;
   border: solid 1px black;
   border-radius: 4px;
   margin-bottom: 8px;
   box-shadow: 3px 3px #888888;
+  font-weight: 100;
   p {
     margin: 4px;
   }
@@ -76,8 +78,7 @@ const CommentComponent = styled.div`
     top: 8px;
   }
   .comment-header {
-    color: #123c69;
-    font-weight: 600;
+    font-weight: 400;
     display: block;
     float: left;
   }
@@ -87,7 +88,7 @@ const CommentComponent = styled.div`
     margin-right: 8px;
   }
   .staricon {
-    color: #23466f;
+    color: #fd3d77;
     margin: 5px 0px 2px 4px;
   }
 `;

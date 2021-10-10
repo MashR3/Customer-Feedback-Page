@@ -9,7 +9,6 @@ import initialComments from './MockComments.json';
 import './styles.css';
 
 function App() {
-
   let [commentArray, setComments] = useState<CommentObject[]>(initialComments);
 
   // useEffect(() => {
@@ -19,12 +18,12 @@ function App() {
   return (
     <div>
       <Header />
-      <MainContainer className='App'>
+      <MainContainer>
         <ProductFeedbackForm
           setComments={setComments}
           commentArray={commentArray}
         />
-        <ProductMetrics commentArray={commentArray}/>
+        <ProductMetrics commentArray={commentArray} />
         <ProductComments commentArray={commentArray} />
       </MainContainer>
     </div>
@@ -34,7 +33,13 @@ function App() {
 export default App;
 
 const MainContainer = styled.div`
-  // padding: 12px;
-  // display: flex;
-  // justify-content: space-between;
+  display: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 80%;
+  min-height: 600px;
+  background: #ffffff;
+  text-align: center;
+  margin: 64px auto;
+  padding: 32px;
 `;

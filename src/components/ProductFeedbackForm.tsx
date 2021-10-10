@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { buildDate } from '../utils';
 import { CommentObject } from '../types';
@@ -34,10 +34,14 @@ const ProductFeedbackForm: React.FC<Props> = ({
     setComments(newArray);
   };
 
-  const handleNameInput = (e: React.FormEvent<HTMLInputElement>): void => setName(e.currentTarget.value);
-  const handleEmailInput = (e: React.FormEvent<HTMLInputElement>): void => setEmail(e.currentTarget.value);
-  const handleCommentInput = (e: React.FormEvent<HTMLTextAreaElement>): void => setComment(e.currentTarget.value);
-  const handleOnClick = (e: React.FormEvent<HTMLInputElement>): void => setRating(+e.currentTarget.value);
+  const handleNameInput = (e: React.FormEvent<HTMLInputElement>): void =>
+    setName(e.currentTarget.value);
+  const handleEmailInput = (e: React.FormEvent<HTMLInputElement>): void =>
+    setEmail(e.currentTarget.value);
+  const handleCommentInput = (e: React.FormEvent<HTMLTextAreaElement>): void =>
+    setComment(e.currentTarget.value);
+  const handleOnClick = (e: React.FormEvent<HTMLInputElement>): void =>
+    setRating(+e.currentTarget.value);
 
   const ratingBuilder = () => {
     let rangeArray = [1, 2, 3, 4, 5];
@@ -116,14 +120,14 @@ const CommentArea = styled.textarea`
   margin-bottom: 4px;
   padding: 12px;
   outline: none;
-  border: 1px solid #ac3b61;
+  border: 1px solid #636464;
 `;
 const Button = styled.button`
   color: #ffffff;
   font-size: 18px;
   font-weight: 400;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: #fc5185;
+  background: #fd3d77;
   border-radius: 4px;
   border: none;
   display: block;
@@ -159,17 +163,17 @@ const Form = styled.form`
 const Label = styled.label`
   display: flex;
   padding-bottom: 4px;
-  font-weight: inherit;
+  font-weight: 400;
   border-radius: 4px 0px 0px 4px;
 `;
 
 const Input = styled.input`
   color: #60656f;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 200;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #ffffff;
-  border: 1px solid #ac3b61;
+  border: 1px solid #636464;
   border-radius: 4px;
   display: block;
   margin-bottom: 4px;

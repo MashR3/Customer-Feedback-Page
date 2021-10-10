@@ -3,23 +3,9 @@
   margin: 4;
   padding: 0;
   font-family: Helvetica, sans-serif;
-  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif; */
 }
 
 body {
-  background: linear-gradient(to top, #AC3B61, #EDC7B7 50%, #fff 80%, #db997a 75px);
-}
-
-.App {
-  display: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 80%;
-  min-height: 600px;
-  background: #eee2dc;
-  text-align: center;
-  margin: 64px auto;
-  border-radius: 10px;
-  padding: 32px;
+  /* background: linear-gradient(to top, #AC3B61, #EDC7B7 50%, #fff 80%, #db997a 75px); */
+  background: radial-gradient(79.97% 124.8% at 80.57% 44.85%, rgba(43, 212, 219, 0.243) 0%, rgba(43, 212, 219, 0) 100%), rgb(12, 17, 66);
 }
