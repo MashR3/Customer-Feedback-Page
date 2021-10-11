@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { buildChartData } from '../utils';
+import { buildChartData, buildYearTrend } from '../utils';
+import { CommentObject } from '../types';
 import {
   ResponsiveContainer,
   LineChart,
@@ -14,35 +15,12 @@ import {
   Legend,
   Line,
 } from 'recharts';
-import { CommentObject } from '../types';
 
 type Props = {
   commentArray: CommentObject[];
 };
 
-const data = [
-  {
-    name: 'May 21',
-    'Monthly Reviews': 2,
-  },
-  {
-    name: 'June 21',
-    'Monthly Reviews': 1,
-  },
-  {
-    name: 'June 21',
-    'Monthly Reviews': 0,
-  },
-  {
-    name: 'July 21',
-    'Monthly Reviews': 2,
-  },
-];
-
 const barBuilder = (commentArray: CommentObject[]) => {
-  console.log(commentArray);
-
-  console.log('Code run');
   return (
     <Bar dataKey={'total'}>
       {buildChartData(commentArray).map((rateValue: any) => (
@@ -55,7 +33,7 @@ const barBuilder = (commentArray: CommentObject[]) => {
 const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
   <>
     <GraphContainer>
-      <FigCaption>{commentArray.length} total ratings</FigCaption>
+      <FigCaption>{commentArray.length} Total Ratings</FigCaption>
       <ResponsiveContainer width='100%' height='100%'>
         <BarChart
           data={buildChartData(commentArray)}
@@ -78,22 +56,23 @@ const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
     </GraphContainer>
 
     <GraphContainer style={{ marginTop: 0 }}>
+      <FigCaption>Trend in Monthly Reviews: 2021</FigCaption>
       <ResponsiveContainer width='100%' height='100%'>
         <LineChart
           width={500}
           height={300}
-          data={data}
-          margin={{ left: 10, right: 40, bottom: 0, top: 0 }}
+          data={buildYearTrend(commentArray)}
+          margin={{ left: 10, right: 40, bottom: 0, top: 25 }}
         >
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='name' />
-          <YAxis />
+          <YAxis type='number' minTickGap={1} allowDecimals={false} />
           <Tooltip />
-          <Legend style={{ position: 'relative' }} />
+          <Legend verticalAlign='top' height={36} />
           <Line
             type='monotone'
-            dataKey='Monthly Reviews'
-            stroke='#8884d8'
+            dataKey='reviews'
+            stroke='#0e1545'
             activeDot={{ r: 8 }}
           />
         </LineChart>

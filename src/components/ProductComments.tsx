@@ -9,7 +9,7 @@ type Props = {
 
 const ProductComments: React.FC<Props> = ({ commentArray }) => (
   <Comments>
-    <h3>Read what others say</h3>
+    <h3>Read what others say <span>({commentArray.length} reviews)</span></h3>
     {commentArray.map((comment) => (
       <Comment comment={comment} key={comment.id} />
     ))}
@@ -30,5 +30,8 @@ const Comments = styled.div`
     text-align: left;
     letter-spacing: 2px;
     margin-top: 0px;
+  }
+  span {
+    font-weight: 100;
   }
 `;

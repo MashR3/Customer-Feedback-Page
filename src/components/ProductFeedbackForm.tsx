@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { buildDate } from '../utils';
+import { buildDateObject } from '../utils';
 import { CommentObject } from '../types';
 import StarRatings from 'react-star-ratings';
 
@@ -29,7 +29,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
       email: email,
       rating: +rating,
       comment: comment,
-      date: buildDate(),
+      dateObject: buildDateObject(),
     };
 
     let newArray = [newComment, ...commentArray];

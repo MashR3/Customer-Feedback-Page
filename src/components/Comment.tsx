@@ -23,6 +23,8 @@ const starBuilder = (comment: CommentObject) => {
   return arr;
 };
 
+const formatDateString = (comment: CommentObject) => (comment.dateObject.day + '/' + comment.dateObject.month + '/' + comment.dateObject.year)
+
 const Comment: React.FC<Props> = ({ comment }) => (
   <CommentComponent>
     <p className='comment-header'>
@@ -31,7 +33,7 @@ const Comment: React.FC<Props> = ({ comment }) => (
     </p>
     <span>{starBuilder(comment)}</span>
     <span className='time-container'>
-      Reviewed on <time>{comment.date}</time>
+      Reviewed on <time>{formatDateString(comment)}</time>
     </span>
     {comment.comment && (
       <>

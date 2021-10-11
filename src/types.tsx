@@ -5,5 +5,9 @@ export type CommentObject = {
     email: string;
     rating: number;
     comment: string;
-    date: string;
+    dateObject: {
+      day: number,
+      month: number,
+      year: number
+    }
   };
