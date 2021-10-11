@@ -126,7 +126,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
 };
 
 const Form = styled.form`
-  background-color: #69d1d7;
+  background-color: #29d4db9e;
   padding: 24px;
   border-radius: 10px;
   margin-bottom: 24px;

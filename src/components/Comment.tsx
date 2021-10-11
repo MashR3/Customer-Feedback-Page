@@ -58,7 +58,7 @@ const CommentComponent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 8px;
-  background: #ffffff;
+  background: #e8fdff;
   border: solid 1px black;
   border-radius: 4px;
   margin-bottom: 8px;

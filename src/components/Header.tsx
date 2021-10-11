@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import headphones from '../images/headphones.png';
 
 function Header() {
   const itemName = 'Headphoneless Headphones';
-  const itemDescription = "Welcome to the revolutionary concept of paying for an item that doesn't work! You (won't) hear the difference with these!";
+  const itemDescription =
+    "Welcome to the revolutionary concept of paying for an item that doesn't work! You (won't) hear the difference with these!";
 
   return (
     <StyledHeader>
@@ -17,6 +19,11 @@ function Header() {
 export default Header;
 
 const StyledHeader = styled.header`
+  padding-top: 15px;
+  background: right;
+  background-image: url(${headphones});
+  background-size: 500px 370px;
+  background-repeat: no-repeat;
   h1 {
     text-align: center;
     letter-spacing: 10px;

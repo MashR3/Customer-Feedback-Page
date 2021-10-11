@@ -27,7 +27,7 @@ const Comments = styled.div`
   padding: 24px;
   margin-right: 4px;
   margin-left: 4px;
-  background: #fd3d7782;
+  background: #ffffff;
   h3 {
     text-align: left;
     letter-spacing: 2px;
