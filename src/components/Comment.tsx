@@ -37,7 +37,7 @@ const Comment: React.FC<Props> = ({ comment }) => (
     {comment.comment && (
       <>
         <Separator />
-        <p>{comment.comment}</p>
+        <p id={`comment-${comment.id}`} >{comment.comment}</p>
       </>
     )}
   </CommentComponent>
@@ -58,7 +58,7 @@ const CommentComponent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 8px;
-  background: #ffffff;
+  background: #e8fdff;
   border: solid 1px black;
   border-radius: 4px;
   margin-bottom: 8px;
@@ -66,6 +66,7 @@ const CommentComponent = styled.div`
   font-weight: 100;
   p {
     margin: 4px;
+    text-align: left;
   }
   .time-container {
     margin: 4px;
