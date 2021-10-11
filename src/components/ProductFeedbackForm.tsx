@@ -18,8 +18,6 @@ const ProductFeedbackForm: React.FC<Props> = ({
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const changeRating = (newRating: number) => setRating(newRating);
-
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -40,6 +38,8 @@ const ProductFeedbackForm: React.FC<Props> = ({
     setRating(0);
     setComment('');
   };
+
+  const changeRating = (newRating: number) => setRating(newRating);
 
   // For accessibility and screen readers
   const ratingBuilder = (num: number) => {

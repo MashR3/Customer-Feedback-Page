@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ProductFeedbackForm from './components/ProductFeedbackForm';
-import ProductMetrics from './components/ProductMetrics';
-import ProductComments from './components/ProductComments';
-import Header from './components/Header';
-import { CommentObject } from './types';
-import initialComments from './MockComments.json';
-import './styles.css';
+import ProductFeedbackForm from './ProductFeedbackForm';
+import ProductMetrics from './ProductMetrics';
+import ProductComments from './ProductComments';
+import Header from './Header';
+import { CommentObject } from '../types';
+import initialComments from '../MockComments.json';
+import '../styles.css';
 
 function App() {
   let [commentArray, setComments] = useState<CommentObject[]>(initialComments);
