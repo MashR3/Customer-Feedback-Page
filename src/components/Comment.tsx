@@ -66,6 +66,7 @@ const CommentComponent = styled.div`
   font-weight: 100;
   p {
     margin: 4px;
+    text-align: left;
   }
   .time-container {
     margin: 4px;
