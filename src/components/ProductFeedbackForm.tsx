@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { buildDateObject } from '../utils';
+import { buildDateObject, totalStars } from '../utils';
 import { CommentObject } from '../types';
 import StarRatings from 'react-star-ratings';
 
@@ -71,7 +71,6 @@ const ProductFeedbackForm: React.FC<Props> = ({
         id='form-username'
         placeholder='Enter your name here'
         type='text'
-        // pattern='[A-Za-z]'
         name='form-username'
         onChange={(e: React.FormEvent<HTMLInputElement>): void =>
           setName(e.currentTarget.value)
@@ -89,7 +88,6 @@ const ProductFeedbackForm: React.FC<Props> = ({
         onChange={(e: React.FormEvent<HTMLInputElement>): void =>
           setEmail(e.currentTarget.value)
         }
-        // pattern='[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]'
         value={email}
         required
       />
@@ -105,7 +103,7 @@ const ProductFeedbackForm: React.FC<Props> = ({
         rating={rating}
         starRatedColor='#fd3d77'
         changeRating={changeRating}
-        numberOfStars={5}
+        numberOfStars={totalStars}
       />
       <br />
       <Label htmlFor='form-comment'>Comment</Label>

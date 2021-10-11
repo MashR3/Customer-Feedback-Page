@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { CommentObject } from '../types';
 import { FaUserCircle, FaStar } from 'react-icons/fa';
+import { formatDateString } from '../utils';
 
 type Props = {
   comment: CommentObject;
@@ -22,8 +23,6 @@ const starBuilder = (comment: CommentObject) => {
   }
   return arr;
 };
-
-const formatDateString = (comment: CommentObject) => (comment.dateObject.day + '/' + comment.dateObject.month + '/' + comment.dateObject.year)
 
 const Comment: React.FC<Props> = ({ comment }) => (
   <CommentComponent>
