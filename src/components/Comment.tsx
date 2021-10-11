@@ -37,7 +37,7 @@ const Comment: React.FC<Props> = ({ comment }) => (
     {comment.comment && (
       <>
         <Separator />
-        <p>{comment.comment}</p>
+        <p id={`comment-${comment.id}`} >{comment.comment}</p>
       </>
     )}
   </CommentComponent>
