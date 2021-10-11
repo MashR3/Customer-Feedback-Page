@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import ProductFeedbackForm from './ProductFeedbackForm';
 import ProductMetrics from './ProductMetrics';
 import ProductComments from './ProductComments';
 import Header from './Header';
 import { CommentObject } from '../types';
-import initialComments from '../MockComments.json';
+import initialComments from '../data/MockComments.json';
 import '../styles.css';
 
 function App() {

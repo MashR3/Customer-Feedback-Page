@@ -56,7 +56,7 @@ const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
     </GraphContainer>
 
     <GraphContainer style={{ marginTop: 0 }}>
-      <FigCaption>Trend in Monthly Reviews: 2021</FigCaption>
+      <FigCaption>Review Trend for Current Year: 2021</FigCaption>
       <ResponsiveContainer width='100%' height='100%'>
         <LineChart
           width={500}

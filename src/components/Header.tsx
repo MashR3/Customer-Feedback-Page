@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 
 function Header() {
-  const [itemName] = useState('Headphoneless Headphones');
-  const [itemDescription] = useState(
-    "Welcome to the revolutionary concept of paying for an item that doesn't work! You (won't) hear the difference with these!"
-  );
+  const itemName = 'Headphoneless Headphones';
+  const itemDescription = "Welcome to the revolutionary concept of paying for an item that doesn't work! You (won't) hear the difference with these!";
 
   return (
     <StyledHeader>

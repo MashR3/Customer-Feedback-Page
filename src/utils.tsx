@@ -1,5 +1,4 @@
 import { CommentObject } from './types';
-import data from './MockComments.json';
 
 export const buildDateObject = () => {
   let date = new Date();
@@ -13,6 +12,12 @@ export const buildDateObject = () => {
     year: `${year}`,
   };
 };
+
+export const formatDateString = (comment: CommentObject) => {
+  return comment.dateObject.day + '/' + comment.dateObject.month + '/' + comment.dateObject.year
+}
+
+export const totalStars = 5;
 
 export const buildChartData = (data: CommentObject[]) => {
   return [
@@ -55,17 +60,17 @@ export const buildYearTrend = (data: CommentObject[]) => {
     'Dec',
   ];
 
-  let countTotal = (data: any, mnth: string) => {
+  let countTotal = (data: CommentObject[], month: string) => {
     let count = 0;
 
     for (let i = 0; i < data.length; i++) {
-      if (months[data[i].dateObject.month - 1] === mnth) count = count + 1;
+      if (months[data[i].dateObject.month - 1] === month) count = count + 1;
     }
     return count;
   };
 
-  return months.map((item) => ({
-    name: item,
-    reviews: countTotal(data, item),
+  return months.map((month) => ({
+    name: month,
+    reviews: countTotal(data, month),
   }));
 };
