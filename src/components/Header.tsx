@@ -22,7 +22,8 @@ const StyledHeader = styled.header`
   padding-top: 15px;
   background: right;
   background-image: url(${headphones});
-  background-size: 500px 370px;
+  background-position-x: calc(100% - 120px);
+  background-size: 500px 350px;
   background-repeat: no-repeat;
   h1 {
     text-align: center;
