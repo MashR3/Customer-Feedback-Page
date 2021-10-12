@@ -1,6 +1,5 @@
 import Enzyme from 'enzyme';
 import ProductMetrics from '../components/ProductMetrics';
-import Cell from 'recharts';
 
 const { mount } = Enzyme;
 

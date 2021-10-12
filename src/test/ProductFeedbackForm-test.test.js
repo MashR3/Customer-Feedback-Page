@@ -44,13 +44,13 @@ describe('<ProductFeedbackForm /> component', () => {
     expect(wrapper.find('button').text()).toEqual('Submit Review');
   });
 
-  it("validates form inputs as required", () => {;
-    expect(wrapper.find('input').at(0).props().required).toEqual(true)
-    expect(wrapper.find('input').at(1).props().required).toEqual(true)
-    expect(wrapper.find('input').at(2).props().required).toEqual(true)
+  it('validates form inputs as required', () => {
+    expect(wrapper.find('input').at(0).props().required).toEqual(true);
+    expect(wrapper.find('input').at(1).props().required).toEqual(true);
+    expect(wrapper.find('input').at(2).props().required).toEqual(true);
   });
 
-  it("validates textarea inputs as not required", () => {;
-    expect(wrapper.find('textarea').at(0).props().required).toBeUndefined()
+  it('validates textarea inputs as not required', () => {
+    expect(wrapper.find('textarea').at(0).props().required).toBeUndefined();
   });
 });
