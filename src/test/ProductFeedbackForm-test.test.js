@@ -3,19 +3,6 @@ import ProductFeedbackForm from '../components/ProductFeedbackForm';
 
 const { mount } = Enzyme;
 
-let data = {
-    "id": 0,
-    "name": "Janine Blondie",
-    "email": "blondetiger11@gmail.com",
-    "rating": 1,
-    "comment": "Not a fan. Where are the headphones?",
-    "dateObject": {
-      "day": 11,
-      "month": 10,
-      "year": 2021
-    }
-}
-
 describe('<ProductFeedbackForm /> component', () => {
   const wrapper = mount(<ProductFeedbackForm />);
 

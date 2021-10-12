@@ -36,8 +36,11 @@ const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
       <FigCaption>{commentArray.length} Total Ratings</FigCaption>
       <ResponsiveContainer width='100%' height='100%'>
         <BarChart
+          id='bar-chart'
           data={buildChartData(commentArray)}
           barCategoryGap='15%'
+          width={500}
+          height={300}
           barSize='20'
           layout='vertical'
           margin={{ left: 10, right: 40, bottom: 0, top: 20 }}
@@ -59,6 +62,7 @@ const ProductMetrics: React.FC<Props> = ({ commentArray }) => (
       <FigCaption>Review Trend for Current Year: 2021</FigCaption>
       <ResponsiveContainer width='100%' height='100%'>
         <LineChart
+          id='line-chart'
           width={500}
           height={300}
           data={buildYearTrend(commentArray)}

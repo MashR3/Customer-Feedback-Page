@@ -43,6 +43,8 @@ Work has also been done with accessibility in mind, having hidden radio buttons 
 
 ## Future Work
 
+* During component testing, realised that it is difficult to test recharts charts, and svg in general. More work needed to test the charts are rendering visually.
+
 * Running Lighthouse on the web page in an incognito window highlights performance issues, as it scores in the medium 50 - 89 range. Future work includes finding ways to optimise performance, possibly looking into lazy load for the comments section at the bottom of the page, and for other slow to render elements.
 
 * Input validation: Currently basic pre-set form validation. Libraries such as Formik, or creating custom input patterns and error message handling (models, customised messages) would help to ensure a stronger standard and guide for customers to enter properly structured feedback, as well as limiting Name to A-Z characters only, and profanity checks, etc.
