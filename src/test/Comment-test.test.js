@@ -1,7 +1,7 @@
 import Enzyme from 'enzyme';
 import Comment from '../components/Comment';
 
-const { shallow } = Enzyme; //whatever you want to use here
+const { shallow } = Enzyme;
 
 let data = [
   {
@@ -63,4 +63,9 @@ describe('<Comment /> component', () => {
     expect(wrapper2.find('#comment-6')).toHaveLength(1); // Contains a comment
   });
 
+  it('renders the correct comment text string', () => {
+    expect(wrapper2.find('#comment-6').text()).toEqual(
+      'Adore the concept of not having headphones when I pay for headphones!'
+    );
+  });
 });
